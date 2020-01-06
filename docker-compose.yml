@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  # Container running Python 3 to execute catalog scripts
+  mp3catalog:
+    build: mp3catalog
+    container_name: mp3catalog
+
+  # MongoDB Database
+  mongodb:
+    image: mongo:3.0.15
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb:/data/db
+
+volumes:
+  mongodb:
